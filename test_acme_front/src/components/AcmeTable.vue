@@ -9,11 +9,10 @@
   </v-container>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class AcmeTable extends Vue {
-  @Prop() private data!: Array<any>;
-  headers: Array<any> = [
+  public headers: any[] = [
     {
       text: 'Dessert (100g serving)',
       align: 'start',
@@ -25,6 +24,7 @@ export default class AcmeTable extends Vue {
     { text: 'Carbs (g)', value: 'carbs' },
     { text: 'Protein (g)', value: 'protein' },
     { text: 'Iron (%)', value: 'iron' },
-  ]
+  ];
+  @Prop() private data!: any[];
 }
 </script>
