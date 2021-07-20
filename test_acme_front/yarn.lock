@@ -9669,11 +9669,6 @@ vue-jest@^3.0.5:
     tsconfig "^7.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-json-to-csv@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/vue-json-to-csv/-/vue-json-to-csv-1.1.8.tgz#10b5652ca1bcc11e5cfd3637b303b7a1e06a12a0"
-  integrity sha512-xdV2cUyLQYPnG6ChjLJn3+PYnP8zxZG5u6QtFjAMzcsUtGvLFrTvMN4XnD/he4M67Y14nXE0i/20xeyaVfhylQ==
-
 "vue-loader-v16@npm:vue-loader@^16.1.0":
   version "16.3.2"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-16.3.2.tgz#b462c94868cea2bedfbbecab8e3eb2a6499d12b8"
