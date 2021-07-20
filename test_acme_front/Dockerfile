@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package.json ./
 RUN  npm install
 EXPOSE 8080
-CMD ["yarn", "serve"]
+CMD ["npm", "run", "serve"]
 
 
 # docker-compose up # to start the compilation process
