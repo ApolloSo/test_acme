@@ -19,7 +19,7 @@
         </div>
       </template>
       <template v-slot:item.description="{ item }">
-        {{ item.description }}
+        {{ item.description.length>30 ? `${item.description.slice(0, 30)}...` : item.description }}
       </template>
     </v-data-table>
   </v-container>
@@ -29,7 +29,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mapActions } from 'vuex';
 @Component({
   methods: {
-    ...mapActions(['getColStores']),
+    ...mapActions(['updateName']),
   },
 })
 export default class AcmeTable extends Vue {
@@ -54,6 +54,7 @@ export default class AcmeTable extends Vue {
   @Prop() private data!: any[];
   public submit(id: string, name: string): void {
     this.itemToEdit = '';
+    this.updateName({id, name});
   }
 }
 </script>
