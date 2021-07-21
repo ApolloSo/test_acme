@@ -6,9 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     colStores: [],
+    counts: 0,
   },
   getters: {
     colStores: (state) => state.colStores,
+    counts: (state) => state.counts,
   },
   mutations: {
     getColStores(state, payload) {
@@ -18,10 +20,13 @@ export default new Vuex.Store({
       const index = state.colStores.findIndex((store) => store.id == payload.id);
       state.colStores[index].name = payload.name;
     },
+    getCounts(state, payload) {
+      state.counts = payload;
+    },
   },
   actions: {
-    getColStores({ commit }) {
-      StoreService.getColStores().then((res) => {
+    getColStores({ commit }, payload= 0) {
+      StoreService.getColStores(payload).then((res) => {
         commit('getColStores', res.data);
       });
     },
@@ -30,6 +35,11 @@ export default new Vuex.Store({
         if (res.status === 200) {
           commit('updateName', payload);
         }
+      });
+    },
+    getCounts({ commit }) {
+      StoreService.getCounts().then((res) => {
+        commit('getCounts', res.data);
       });
     },
   },
