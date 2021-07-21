@@ -13,6 +13,11 @@ Run following command
 ### Build docker image
   docker-compose up
  -start docker image
+ 
+ 
           docker-compose start
  -stop docker image
+ 
+ 
+ 
           docker-compose stop
