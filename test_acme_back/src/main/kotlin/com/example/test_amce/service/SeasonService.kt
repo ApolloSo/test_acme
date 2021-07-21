@@ -3,6 +3,8 @@ package com.example.test_amce.service
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
+import java.io.File
+import java.nio.file.Files
 import java.net.URI
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -37,6 +39,9 @@ class SeasonService{
     @Value("\${json.seasonApi.url}") 
     val seasonUrl: String = ""
 
+    
+    @Value("\${json.load.mode}")
+    val loadMode: String = ""
 
     fun findAll(): List<Season> = seasonRepository.findAll()
 
@@ -55,17 +60,26 @@ class SeasonService{
     }
 
     fun load() {
-        val client = HttpClient.newBuilder().build()
-        val request =
-                HttpRequest.newBuilder()
-                        .uri(URI.create(seasonUrl))
-                        // .POST(formData(values))
-                        .header("Content-Type", "application/json")
-                        .header("apiKey", apiKey)
-                        .build()
+        
+        var jsonStr: String = ""
 
-        val response = client.send(request, HttpResponse.BodyHandlers.ofString())
-        val jsonStr: String = response.body()
+        if (loadMode=="http"){
+            val client = HttpClient.newBuilder().build()
+            val request =
+                    HttpRequest.newBuilder()
+                            .uri(URI.create(seasonUrl))
+                            // .POST(formData(values))
+                            // .header("Content-Type", "application/json")
+                            .header("apiKey", apiKey)
+                            .build()
+
+            val response = client.send(request, HttpResponse.BodyHandlers.ofString())
+            jsonStr = response.body()
+        }
+        if (loadMode=="file"){
+            var resource:File = File("response1.json");
+			jsonStr = String(Files.readAllBytes(resource.toPath()));
+        }
 
         val objectMapper: ObjectMapper = ObjectMapper()
         val rootNode: JsonNode = objectMapper.readTree(jsonStr)
@@ -73,6 +87,7 @@ class SeasonService{
         for (objNode: JsonNode in rootNode) {
             val jObj1: JSONObject = JSONObject(objNode.toString())
             val season: Season = objectMapper.readValue(jObj1.toString(), Season::class.java)
+            println(season.storeId)
             val sfind: Season = findOne(season.storeId)
             if (sfind == null) {
                 create(season)

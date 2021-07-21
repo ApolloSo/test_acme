@@ -3,6 +3,8 @@ package com.example.test_amce.service
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
+import java.io.File
+import java.nio.file.Files
 import java.net.URI
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -38,6 +40,9 @@ class SvalueService {
     val svalueUrl: String = ""
 
 
+    @Value("\${json.load.mode}")
+    val loadMode: String = ""
+
     fun findAll(): List<Svalue> = svalueRepository.findAll()
 
     fun findOne(id: Int): Svalue = svalueRepository.findOne(id)
@@ -55,17 +60,25 @@ class SvalueService {
     }
 
     fun load() {
-        val client = HttpClient.newBuilder().build()
-        val request =
-                HttpRequest.newBuilder()
-                        .uri(URI.create(svalueUrl))
-                        // .POST(formData(values))
-                        .header("Content-Type", "application/json")
-                        .header("apiKey", apiKey)
-                        .build()
+        var csvStr: String = ""
 
-        val response = client.send(request, HttpResponse.BodyHandlers.ofString())
-        val csvStr: String = response.body()
+        if (loadMode=="http"){
+            val client = HttpClient.newBuilder().build()
+            val request =
+                    HttpRequest.newBuilder()
+                            .uri(URI.create(svalueUrl))
+                            // .POST(formData(values))
+                            // .header("Content-Type", "application/json")
+                            .header("apiKey", apiKey)
+                            .build()
+
+            val response = client.send(request, HttpResponse.BodyHandlers.ofString())
+            csvStr = response.body()
+        }
+        if (loadMode=="file"){
+            var resource:File = File("response2.csv");
+			csvStr = String(Files.readAllBytes(resource.toPath()));
+        }
 
         var lines = csvStr.lines()
 
@@ -75,7 +88,7 @@ class SvalueService {
                 if(vals.get(0).length >0){
                     val svalue: Svalue = Svalue(vals.get(0).toInt(), vals.get(1), vals.get(2))
                     val sfind: Svalue = findOne(svalue.store_id)
-
+                    println(svalue.store_id)
                     if (sfind == null) {
                         create(svalue)
                     } else {
