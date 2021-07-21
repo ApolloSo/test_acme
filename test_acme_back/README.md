@@ -1,6 +1,6 @@
-# OKRapi
+# test_acme API
 
-This is a SpringBoot-Mybatis application providing a REST API to a DataMapper-backed model for OKR-e project.
+This is a SpringBoot-Mybatis application providing a REST API to a DataMapper-backed model for test_acme project.
 
 ## Install
 
@@ -12,7 +12,7 @@ This is a SpringBoot-Mybatis application providing a REST API to a DataMapper-ba
 
 * Install Postgresql and run service
 
-### Install on CentOS 7 or 8
+### Install on Linux
 
 * Installing OpenJDK 8
 
@@ -22,19 +22,27 @@ $ sudo dnf install java-1.8.0-openjdk-devel
 
 $ sudo dnf install maven
 
-* Installing Mysql server
-
-$  
+* Installing Postgresql server
 
 ## Set the Environment
 
 set environment configuration on "src/main/resource/application.properties"
 
-spring.datasource.url = jdbc:mysql://[ip]:3306/postgres
-spring.datasource.username = okr
-spring.datasource.password = 123!@#qweQWE
-spring.datasource.data=test_acme.sql
+jwt.apiKey=76a325g7g2ahs7h4673aa25s47632h5362a4532642
+json.storeApi.url=http://134.209.29.209/v1/stores/?page=10
+json.seasonApi.url=http://134.209.29.209/other/stores_and_seasons
+json.csvApi.url=http://134.209.29.209/extra_data.csv
+json.load.mode=http  // 'file' or 'http'
 
+server.port = 8081
+
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+spring.datasource.username = postgres
+spring.datasource.password = root
+spring.datasource.sqlScriptEncoding=UTF-8
+# spring.datasource.data=acme_db.sql
+spring.datasource.initialization-mode=always
 ## Build the app
 
     mvn clean install 
@@ -49,7 +57,7 @@ or
 
 ## Run the service on Linux system
 
-Make the service of okr project
+Make the service of test_acme project
 
 $ nano /etc/systemd/system/test_amce.service
 
@@ -66,6 +74,7 @@ SuccessExitStatus=143
 [Install]
 WantedBy=multi-user.target
 
+-----------------
 Enable and start service
 
 systemctl enable test_amce
@@ -79,3 +88,7 @@ systemctl daemon-reload
 systemctl restart test_amce
 
 ----------------
+
+## API endpoint
+
+	please refer 'postman_collection.json' file in root directory.
