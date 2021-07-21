@@ -6,4 +6,8 @@ export const StoreService = {
     const res = await axios.get(endPoint.GET_COLSTORES_URL);
     return res;
   },
+  async updateName(payload) {
+    const res = await axios.post(endPoint.UPDATE_NAME_URL, payload);
+    return res;
+  },
 };
