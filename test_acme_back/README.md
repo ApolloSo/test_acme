@@ -41,7 +41,6 @@ spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
 spring.datasource.username = postgres
 spring.datasource.password = root
 spring.datasource.sqlScriptEncoding=UTF-8
-# spring.datasource.data=acme_db.sql
 spring.datasource.initialization-mode=always
 ## Build the app
 
