@@ -20,8 +20,8 @@ class ColColStoreController
     lateinit var colstoreService: ColStoreService
 
     @GetMapping
-    fun getColStores(): List<ColStore> =
-            colstoreService.findAll()
+    fun getColStores(@RequestParam page: Int): List<ColStore> =
+            colstoreService.findAll(page)
 
     @GetMapping("{id}")
     fun getColStore(@PathVariable id: Int): ColStore =

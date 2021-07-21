@@ -19,10 +19,13 @@ import com.example.test_amce.repository.*
 @Service
 class ColStoreService {
 
+    @Value("\${page.records}") 
+    val records: String = ""
+
     @Autowired
     lateinit var colRepository: ColStoreRepository
 
-    fun findAll(): List<ColStore> = colRepository.findAll()
+    fun findAll(page:Int): List<ColStore> = colRepository.findAll(records.toInt(), page*records.toInt())
 
     fun findOne(id: Int): ColStore = colRepository.findOne(id)
 

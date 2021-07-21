@@ -11,9 +11,10 @@ interface ColStoreRepository {
         from tb_store
         left join tb_season on tb_season.store_id = tb_store.id
         left join tb_svalue on tb_svalue.store_id = tb_store.id
-        ORDER BY id
+        ORDER BY id 
+        LIMIT #{limit} OFFSET #{offset}
     """)
-    fun findAll(): List<ColStore>
+    fun findAll(limit:Int, offset:Int): List<ColStore>
 
     @Select("""
         select tb_store.* , tb_season.season, special_f1, special_f2
