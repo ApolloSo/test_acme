@@ -12,6 +12,8 @@ Run following command
   yarn test:unit
 ### Build docker image
   docker-compose up
+  
+  
  -start docker image
  
  
