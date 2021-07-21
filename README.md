@@ -1,9 +1,9 @@
 # test_acme
-## front end
-### package install
+## Front end
+
 Goto test_acme_front directory and open console
 Run following command
-### install packages
+### Install packages
       yarn install
 ### Run front end
       yarn serve
