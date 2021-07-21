@@ -3,15 +3,17 @@
 ### package install
 Goto test_acme_front directory and open console
 Run following command
-  yarn install
+### install packages
+      yarn install
 ### Run front end
-  yarn serve
+      yarn serve
 ### Build front end
-  yarn build
+      yarn build
 ### Test unit
-  yarn test:unit
+      yarn test:unit
 ### Build docker image
-  docker-compose up
+
+      docker-compose up
   
   
  -start docker image
