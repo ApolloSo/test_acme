@@ -20,13 +20,13 @@ import com.example.test_amce.repository.*
 class ColStoreService {
 
     @Autowired
-    lateinit var userRepository: ColStoreRepository
+    lateinit var colRepository: ColStoreRepository
 
-    fun findAll(): List<ColStore> = userRepository.findAll()
+    fun findAll(): List<ColStore> = colRepository.findAll()
 
-    fun findOne(id: Int): ColStore = userRepository.findOne(id)
+    fun findOne(id: Int): ColStore = colRepository.findOne(id)
 
-    fun findByName(name: String): List<ColStore> = userRepository.findByName(name)
+    fun findByName(name: String): List<ColStore> = colRepository.findByName(name)
 
     fun delete(id: Int) {
         

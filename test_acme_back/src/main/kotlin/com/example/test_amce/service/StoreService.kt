@@ -31,7 +31,7 @@ import com.example.test_amce.repository.*
 class StoreService {
 
     @Autowired
-    lateinit var userRepository: StoreRepository
+    lateinit var storeRepository: StoreRepository
 
     @Value("\${jwt.apiKey}")
     val apiKey: String = ""
@@ -43,27 +43,27 @@ class StoreService {
     val storeUrl: String = ""
 
 
-    fun findAll(): List<Store> = userRepository.findAll()
+    fun findAll(): List<Store> = storeRepository.findAll()
 
-    fun findOne(id: Int): Store = userRepository.findOne(id)
+    fun findOne(id: Int): Store = storeRepository.findOne(id)
 
-    fun findByName(name: String): List<Store> = userRepository.findByName(name)
+    fun findByName(name: String): List<Store> = storeRepository.findByName(name)
 
     fun create(store: Store){
-        userRepository.insert(store)
+        storeRepository.insert(store)
     }
 
     fun update(store: Store){
-        userRepository.update(store)
+        storeRepository.update(store)
     }
 
     fun updateName(store: Store) {
-        userRepository.updateName(store)
+        storeRepository.updateName(store)
     }
 
 
     fun delete(id: Int) {
-        userRepository.delete(id)
+        storeRepository.delete(id)
     }
 
     fun load(){
