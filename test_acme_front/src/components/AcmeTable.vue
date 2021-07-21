@@ -19,7 +19,7 @@
         </div>
       </template>
       <template v-slot:item.description="{ item }">
-        {{ item.description.slice(0, 30) }}
+        {{ item.description }}
       </template>
     </v-data-table>
   </v-container>
@@ -48,7 +48,7 @@ export default class AcmeTable extends Vue {
     { text: 'Season', value: 'season' },
     { text: 'Special f1', value: 'special_f1' },
     { text: 'Special f2', value: 'special_f2' },
-    { text: 'Description', value: 'description' },
+    { text: 'Description', value: 'description', width: '100' },
   ];
   private itemToEdit: string = '';
   @Prop() private data!: any[];

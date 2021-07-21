@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AcmeTable.vue renders props.data when passed 1`] = `
-<div class="container">
+<div class="container container--fluid">
   <div class="v-data-table v-data-table--has-bottom theme--light">
     <div class="v-data-table__wrapper">
       <table>
@@ -12,25 +12,40 @@ exports[`AcmeTable.vue renders props.data when passed 1`] = `
           <col class="">
           <col class="">
           <col class="">
+          <col class="">
+          <col class="">
+          <col class="">
         </colgroup>
         <thead class="v-data-table-header">
           <tr>
-            <th role="columnheader" scope="col" aria-label="Dessert (100g serving)" class="text-start"><span>Dessert (100g serving)</span></th>
-            <th role="columnheader" scope="col" aria-label="Calories: Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Calories</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
-            <th role="columnheader" scope="col" aria-label="Fat (g): Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Fat (g)</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
-            <th role="columnheader" scope="col" aria-label="Carbs (g): Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Carbs (g)</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
-            <th role="columnheader" scope="col" aria-label="Protein (g): Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Protein (g)</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
-            <th role="columnheader" scope="col" aria-label="Iron (%): Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Iron (%)</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
+            <th role="columnheader" scope="col" aria-label="ID: Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>ID</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
+            <th role="columnheader" scope="col" aria-label="Name" class="text-start" style="width: 200px; min-width: 200px;"><span>Name</span></th>
+            <th role="columnheader" scope="col" aria-label="Code: Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Code</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
+            <th role="columnheader" scope="col" aria-label="Opening date: Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Opening date</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
+            <th role="columnheader" scope="col" aria-label="Store type: Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Store type</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
+            <th role="columnheader" scope="col" aria-label="Season: Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Season</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
+            <th role="columnheader" scope="col" aria-label="Special f1: Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Special f1</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
+            <th role="columnheader" scope="col" aria-label="Special f2: Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Special f2</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
+            <th role="columnheader" scope="col" aria-label="Description: Not sorted. Activate to sort ascending." aria-sort="none" class="text-start sortable"><span>Description</span><i aria-hidden="true" class="v-icon notranslate v-data-table-header__icon mdi mdi-arrow-up theme--light" style="font-size: 18px;"></i></th>
           </tr>
         </thead>
         <tbody>
           <tr class="">
-            <td class="text-start">test</td>
+            <td class="text-start">test_id</td>
+            <td class="text-start">
+              <div class="d-flex"><span></span>
+                <!----> <button type="button" class="v-icon notranslate v-icon--link mdi mdi-lead-pencil theme--light" style="font-size: 16px;"></button>
+              </div>
+            </td>
             <td class="text-start"></td>
             <td class="text-start"></td>
             <td class="text-start"></td>
             <td class="text-start"></td>
             <td class="text-start"></td>
+            <td class="text-start"></td>
+            <td class="text-start">
+
+            </td>
           </tr>
         </tbody>
       </table>
@@ -38,14 +53,14 @@ exports[`AcmeTable.vue renders props.data when passed 1`] = `
     <div class="v-data-footer">
       <div class="v-data-footer__select">Rows per page:<div class="v-input v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light v-text-field v-select">
           <div class="v-input__control">
-            <div role="button" aria-haspopup="listbox" aria-expanded="false" aria-owns="list-12" class="v-input__slot">
+            <div role="button" aria-haspopup="listbox" aria-expanded="false" aria-owns="list-16" class="v-input__slot">
               <div class="v-select__slot">
                 <div class="v-select__selections">
-                  <div class="v-select__selection v-select__selection--comma">5</div><input aria-label="Rows per page:" id="input-12" readonly="readonly" type="text" aria-readonly="false" autocomplete="off">
+                  <div class="v-select__selection v-select__selection--comma">10</div><input aria-label="Rows per page:" id="input-16" readonly="readonly" type="text" aria-readonly="false" autocomplete="off">
                 </div>
                 <div class="v-input__append-inner">
                   <div class="v-input__icon v-input__icon--append"><i aria-hidden="true" class="v-icon notranslate mdi mdi-menu-down theme--light"></i></div>
-                </div><input type="hidden" value="5">
+                </div><input type="hidden" value="10">
               </div>
               <div class="v-menu">
                 <!---->
