@@ -12,7 +12,7 @@ Run following command
   yarn test:unit
 ### Build docker image
   docker-compose up
-####start docker image
+-start docker image
     docker-compose start
-####stop docker image
+-stop docker image
     docker-compose stop
