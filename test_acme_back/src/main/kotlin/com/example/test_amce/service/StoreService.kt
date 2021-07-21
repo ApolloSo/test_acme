@@ -67,37 +67,55 @@ class StoreService {
     }
 
     fun load(){
-        var jsonStr: String = ""
-
+        var jsonStr: String = "default"
+        var pageNum:Int = 0
         if (loadMode=="http"){
-            val client = HttpClient.newBuilder().build()
-            val request =
-            HttpRequest.newBuilder()
-                    .uri(URI.create(storeUrl))
-                    // .POST(formData(values))
-                    // .header("Content-Type", "application/json")
-                    .header("apiKey", apiKey)
-                    .build()
+            
+            while(jsonStr.length>4){
+                print("pages:  " + pageNum)
 
-            val response = client.send(request, HttpResponse.BodyHandlers.ofString())
-            jsonStr = response.body()
+                val client = HttpClient.newBuilder().build()
+                val request =
+                        HttpRequest.newBuilder()
+                                .uri(URI.create(storeUrl+pageNum.toString()))
+                                // .POST(formData(values))
+                                // .header("Content-Type", "application/json")
+                                .header("apiKey", apiKey)
+                                .build()
+
+                val response = client.send(request, HttpResponse.BodyHandlers.ofString())
+                jsonStr = response.body()
+                // println(jsonStr)
+                if(jsonStr.get(0)=='['){
+                    insertData(jsonStr)
+                    pageNum++
+                }
+                
+            }
+            
         }
         if (loadMode=="file"){
             var resource:File = File("response.json");
 			jsonStr = String(Files.readAllBytes(resource.toPath()));
+
+            insertData(jsonStr)
         }
 
-        val objectMapper:ObjectMapper =  ObjectMapper()
-        val  rootNode:JsonNode = objectMapper.readTree(jsonStr)
+        
+    }
 
-        for (objNode:JsonNode in rootNode) {
-            val jObj1:JSONObject  = JSONObject(objNode.toString());
-            val store:Store = objectMapper.readValue(jObj1.toString(), Store::class.java);
+    fun insertData(jsonStr:String){
+        val objectMapper: ObjectMapper = ObjectMapper()
+        val rootNode: JsonNode = objectMapper.readTree(jsonStr)
+
+        for (objNode: JsonNode in rootNode) {
+            val jObj1: JSONObject = JSONObject(objNode.toString())
+            val store: Store = objectMapper.readValue(jObj1.toString(), Store::class.java)
             println(store.id)
-            val sfind:Store = findOne(store.id)
-            if(sfind == null){
+            val sfind: Store = findOne(store.id)
+            if (sfind == null) {
                 create(store)
-            }else{
+            } else {
                 update(store)
             }
         }
