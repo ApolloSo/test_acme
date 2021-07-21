@@ -13,7 +13,7 @@ describe('AcmeTable.vue', () => {
   // })
 
   it('renders props.data when passed', () => {
-    const data = [{name: 'test'}];
+    const data = [{id: 'test_id'}];
     const wrapper = mount(AcmeTable, {
       localVue,
       vuetify,
@@ -22,6 +22,6 @@ describe('AcmeTable.vue', () => {
     // expect(wrapper.find('test').exists()).toBe(true)
     expect(wrapper.html()).toMatchSnapshot();
     const cell = wrapper.find('tbody > tr > td');
-    expect(cell.text()).toBe('test');
+    expect(cell.text()).toBe('test_id');
   });
 });
