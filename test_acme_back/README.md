@@ -28,20 +28,14 @@ $ sudo dnf install maven
 
 set environment configuration on "src/main/resource/application.properties"
 
-jwt.apiKey=76a325g7g2ahs7h4673aa25s47632h5362a4532642
-json.storeApi.url=http://134.209.29.209/v1/stores/?page=10
-json.seasonApi.url=http://134.209.29.209/other/stores_and_seasons
-json.csvApi.url=http://134.209.29.209/extra_data.csv
-json.load.mode=http  // 'file' or 'http'
+	json.load.mode=http  // 'file' or 'http'
 
-server.port = 8081
+	server.port = 8081
 
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
-spring.datasource.username = postgres
-spring.datasource.password = root
-spring.datasource.sqlScriptEncoding=UTF-8
-spring.datasource.initialization-mode=always
+	spring.datasource.driver-class-name=org.postgresql.Driver
+	spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+	spring.datasource.username = postgres
+	spring.datasource.password = root
 ## Build the app
 
     mvn clean install 
