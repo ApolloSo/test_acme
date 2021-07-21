@@ -31,6 +31,10 @@ class ColColStoreController
     fun getColStoresByName(@RequestParam name: String): List<ColStore> =
             colstoreService.findByName("%"+name+"%")
 
+    @GetMapping("/getCount")
+    fun getCount(): Int =
+                        colstoreService.getCount()
+
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteColStore(@PathVariable id: Int) {

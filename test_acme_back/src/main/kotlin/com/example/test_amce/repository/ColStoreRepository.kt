@@ -16,6 +16,9 @@ interface ColStoreRepository {
     """)
     fun findAll(limit:Int, offset:Int): List<ColStore>
 
+    @Select("select count(*) as count from tb_store")
+    fun getCount():Int
+
     @Select("""
         select tb_store.* , tb_season.season, special_f1, special_f2
         from tb_store

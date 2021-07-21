@@ -29,6 +29,8 @@ class ColStoreService {
 
     fun findOne(id: Int): ColStore = colRepository.findOne(id)
 
+    fun getCount(): Int = colRepository.getCount()
+
     fun findByName(name: String): List<ColStore> = colRepository.findByName(name)
 
     fun delete(id: Int) {
